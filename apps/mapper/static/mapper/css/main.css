@@ -1,0 +1,173 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	/*border: 1px dashed white;*/
+	color: #f3a902;
+	font-family: "Roboto", sans-serif;
+	
+}
+
+.pubg{
+
+	width: 1800px;
+	padding-top: 10px;
+	padding-left: 20px;
+	background-color: black;
+	background-image: url("/static/mapper/images/main-bg.jpg");
+	background-size: ;
+
+}
+
+.container{
+	margin-left: 0px;
+}
+
+#header{
+	height: 50px;
+	background-color: none;
+	margin-top: 5px;
+	color: #f3a902;
+	padding-left: 60px;
+	border-bottom: 1px solid rgba(255,255,255,.2);
+}
+
+#header a{
+	border: none;
+}
+
+#header h4{
+	color: #f3a902;
+	font-family: "Roboto", sans-serif;
+
+}
+
+#header .main-menu, li{
+	list-style-type: none;
+	margin-left: 25px;
+	display: flex;
+  	justify-content: center;
+  	align-items: center;
+  	font-weight: 600;
+  	top: 0;
+  	color: #afb7b9;
+  	font-family: "Oswald", sans-serif;
+  	border: none;
+}
+
+#navLinks{
+	font-family: "Oswald", sans-serif;
+	text-decoration-style: none;
+	color: #afb7b9;
+	background-color: transparent;
+	border: none;
+}
+
+#header a:hover{
+	color:white;
+	background-color: #304E6F;
+}
+
+#footer{
+		text-align: center;
+}
+
+#footerLogo{
+	width: 200px;
+	height:	60px;
+	background-image: url("/static/mapper/images/PUBG_Header.png");	
+	background-size: contain;
+	background-repeat: no-repeat;
+	display: inline-block;
+
+}
+
+#wrapper{
+	height: 780px;
+	margin-left: 2%;
+}
+
+.platformSelect{
+	margin-bottom: 10px;
+}
+
+
+
+#rightContent{
+	padding-left: 25px;
+}
+
+.playerSearch{
+	padding: 4px 6px;
+	display: block;
+	height: 200px;
+}
+
+.playerSearch select{
+	width: 100px;
+}
+
+.playerInfo{
+	vertical-align: top;
+	padding: 4px 6px;
+	display: block;
+}
+
+.playerInfoLeft{
+	display: inline-block;
+	padding-right: 25px;
+	border-right: 1px solid rgba(255,255,255,.2);
+}
+
+.playerInfoLeft ul{
+	height: 410px;
+	list-style: inside url('pan.jpeg');
+	overflow: hidden;
+	overflow-y: scroll;
+}
+
+.playerInfoRight{
+	margin-left: 25px;
+	vertical-align: top;
+	display: inline-block;
+	vertical-align: top;
+}
+
+.playerInfoRightMin{
+	display: inline-block;
+	width: 240px;
+	vertical-align:	top;
+	margin-right: 5px;
+}
+
+.playerWrapper{
+	height: 500px;
+	background-color: gray;
+}
+
+
+
+.mapWrapper{
+	display: grid;
+	width: 710px;
+	height: 710px;
+	margin-top: 5px;
+	
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.mapWrapper img{
+	width: 700px;
+	height: 700px;
+	vertical-align: top;
+}
+
+.mapWrapperUS{
+	margin-top: 25px;
+	display: grid;
+	width: 700px;
+	height: 700px;
+	/*background-image: url("/static/mapper/images/usa-hex.jpg");	*/
+	background-size: contain;
+	background-repeat: no-repeat;
+}

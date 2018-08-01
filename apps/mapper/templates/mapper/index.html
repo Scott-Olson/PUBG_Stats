@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PUBG Stats</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'mapper/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'mapper/css/main.css' %}">
+    <style type="text/css">
+    .states :hover {
+      fill: red;
+    }
+
+    .state-borders {
+      fill: none;
+      stroke: #fff;
+      stroke-width: 0.5px;
+      stroke-linejoin: round;
+      stroke-linecap: round;
+      pointer-events: none;
+    }
+    </style>
+    
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    
+</head>
+<body class="pubg">
+    <div class="container">
+        <div class="row" id='header'>
+            <a class="btn btn-light btn-outline-light" href="/"><h4>PUBG Stats</h4></a>
+            <nav>
+                <ul class="main-menu">
+                    <li><a class = "btn btn-light btn-outline-light"href="/maps" id ="navLinks" role='button'>MAPS</a></li>
+                    <li><a class = "btn btn-light btn-outline-light"href="/players" id ="navLinks" role='button'>PLAYERS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="row" id = 'wrapper'>
+               
+                <div class="mapWrapperUS">
+                    <svg width="960" height="700"></svg>
+                    <script>
+
+                    var svg = d3.select("svg");
+
+                    var path = d3.geoPath();
+
+                    d3.json("https://d3js.org/us-10m.v1.json", function(error, us) {
+                      if (error) throw error;
+
+                      svg.append("g")
+                          .attr("class", "states")
+                        .selectAll("path")
+                        .data(topojson.feature(us, us.objects.states).features)
+                        .enter().append("path")
+                          .attr("d", path);
+
+                      svg.append("path")
+                          .attr("class", "state-borders")
+                          .attr("d", path(topojson.mesh(us, us.objects.states, function(a, b) { return a !== b; })));
+                    });
+
+                    </script>
+                </div>
+        </div>
+        <div class="row" id ="footer">
+            <div class ="col-4"><a href="/test">Test</a></div>
+            <div class ="col-4">
+                <div id="footerLogo"></div>
+                <div><a href="https://developer.playbattlegrounds.com/apps?locale=en">Built with PUBG Develeper API</a></div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="{% static 'mapper/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mapper/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mapper/js/bootstrap.min.js' %}"></script>        
+</body>
+</html>

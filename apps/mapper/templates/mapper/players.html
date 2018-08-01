@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PUBG Stats</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'mapper/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'mapper/css/main.css' %}">
+    <style type="text/css">
+
+    </style>
+</head>
+<body class="pubg">
+    <div class="container">
+        <div class="row" id='header'>
+            <a href="/"><h4>PUBG Stats</h4></a>
+            <nav>
+                <ul class="main-menu">
+                    <li><a class = "btn btn-light btn-outline-light"href="/players" id ="navLinks" role='button'>PLAYERS</a></li>
+                    <li><a class = "btn btn-light btn-outline-light"href="/maps" id ="navLinks" role='button'>MAPS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="container" id = 'wrapper'>
+            <div class='row playerSearch'>
+                    <form action='/players/search' method='post'>
+                        {% csrf_token %}
+                        <label for="playerName">Enter a player name:</label><br>
+                        <input type="text" name="playerName" placeholder="Player Name"><br><br>
+                        <label for="platformSelect">Select a platform:</label><br>
+                        <select class="custom-select custom-select-sm platformSelect" name="platformSelect">
+                            <option value="1">PC</option>
+                            <option value="2">LameBOX</option>
+                        </select><br>
+                        <input class ="btn btn-light btn-outline-light" type="submit" name="submitPlayerSearch" value="Find Player">
+                    </form>
+            </div>
+            <div class='row playerInfo'>
+                    <div class="col-5 playerInfoLeft">
+                        <h5> Recent Matches: ({{matches|length}})</h5>
+                        <nav>
+                            <ul >   
+                            {% for match in matches %}
+                                <li>{{match}}</li>
+                            {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="col-6 playerInfoRight">
+                        <h5>Player Info:</h5>
+                        <div class="playerInfoRightMin">
+                            <p>Player Name: {{player.name}}</p>
+                            <p>Matches played: {{matchCount}}</p>
+                            <p>Chicken Dinners: {{wins}}</p>
+                            <p>Top ten placements: {{topten}}</p>
+                            <p>Kills: {{kills}}</p>
+                            <p>Longest kill: {{longestKill}} meters</p>
+                            <p>Most kills in a game: {{mostKills}}</p>
+                            <p>Road kills: {{roadKills}}</p>
+                            <p>Distance walked: {{walkDistance|floatformat:0}} meters</p>
+                        </div>
+                        <div class="playerInfoRightMin">
+                            <p>Updated: {{player.updated_at}}</p>
+                            <p>Region: {{player.shard_id}}</p>
+                            <p>Win percentage: {{winPerc|floatformat:0}}%</p>
+                            <p>Top ten percentage: {{topPerc|floatformat:0}}%</p>
+                            <p>K/D Average: {{kdAvg|floatformat:2}}</p>
+                            <p>Headshot Kills: {{headShot}}</p>
+                            <p>Most damage: {{mostDamage|floatformat:1}}</p>
+                            <p>Longest killstreak: {{killStreak}}</p>
+                            <p>Avg Time Alive: {{timeAvg|floatformat:2}} mins</p>
+
+                        </div>
+                    </div>
+            </div>
+        </div>
+        <div class="row" id ="footer">
+            <div class ="col-4"></div>
+            <div class ="col-4">
+                <div id="footerLogo"></div>
+                <div><a href="https://developer.playbattlegrounds.com/apps?locale=en">Built with PUBG Develeper API</a></div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="{% static 'mapper/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mapper/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mapper/js/bootstrap.min.js' %}"></script>        
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PUBG Mapper</title>
+    {% load static %}
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'mapper/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'mapper/css/main.css' %}">
+    <style type="text/css">
+
+    </style>
+</head>
+<body class="pubg">
+    <div class="container">
+        <div class="row" id='header'>
+            <a href="/"><h4>PUBG Mapper</h4></a>
+            <nav>
+                <ul class="main-menu">
+                    <li><a class = "btn btn-light btn-outline-light"href="/maps" id ="navLinks" role='button'>MAPS</a></li>
+                    <li><a class = "btn btn-light btn-outline-light"href="/players" id ="navLinks" role='button'>PLAYERS</a></li>
+                    <li><a class = "btn btn-light btn-outline-light"href="/items" id ="navLinks" role='button'>ITEMS</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="row" id = 'wrapper'>
+            {{context}}
+        </div>   
+        <div class="row" id ="footer">
+            <div class ="col-4"><a href="/test">Test</a></div>
+            <div class ="col-4">
+                <div><a href="https://developer.playbattlegrounds.com/apps?locale=en">Built with PUBG Develeper API</a></div>
+                <div id="footerLogo"></div>
+
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap -->
+    <script type="text/javascript" src="{% static 'mapper/js/jquery-3.3.1.slim.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mapper/js/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'mapper/js/bootstrap.min.js' %}"></script>        
+</body>
+</html>
